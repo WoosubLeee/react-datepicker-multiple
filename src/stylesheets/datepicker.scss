@@ -427,7 +427,8 @@
 
   &--selected,
   &--in-selecting-range,
-  &--in-range {
+  &--in-range,
+  &--multiple-selected {
     border-radius: $datepicker__border-radius;
     background-color: $datepicker__selected-color;
     color: #fff;

@@ -183,6 +183,8 @@ export default class Calendar extends React.Component {
     customTimeInput: PropTypes.element,
     weekAriaLabelPrefix: PropTypes.string,
     setPreSelection: PropTypes.func,
+    multipleSelected: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+    selectsMultiple: PropTypes.bool,
   };
 
   constructor(props) {
@@ -847,6 +849,8 @@ export default class Calendar extends React.Component {
             containerRef={this.containerRef}
             monthShowsDuplicateDaysEnd={monthShowsDuplicateDaysEnd}
             monthShowsDuplicateDaysStart={monthShowsDuplicateDaysStart}
+            multipleSelected={this.props.multipleSelected}
+            selectsMultiple={this.props.selectsMultiple}
           />
         </div>
       );

@@ -1,10 +1,10 @@
 {
-  "author": "HackerOne",
-  "name": "react-datepicker",
-  "description": "A simple and reusable datepicker component for React",
-  "version": "3.8.0",
+  "author": "WoosubLeee",
+  "name": "react-datepicker-multiple-dates",
+  "description": "Extended react-datepicker for selecting multiple unconsecutive dates",
+  "version": "1.0.2",
   "license": "MIT",
-  "homepage": "https://github.com/Hacker0x01/react-datepicker",
+  "homepage": "https://github.com/WoosubLeee/react-datepicker-multiple-dates",
   "main": "dist/index.js",
   "browser": "dist/react-datepicker.min.js",
   "module": "dist/es/index.js",
@@ -29,10 +29,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/Hacker0x01/react-datepicker.git"
+    "url": "git://github.com/WoosubLeee/react-datepicker-multiple-dates.git"
   },
   "bugs": {
-    "url": "https://github.com/Hacker0x01/react-datepicker/issues"
+    "url": "https://github.com/WoosubLeee/react-datepicker-multiple-dates/issues"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
