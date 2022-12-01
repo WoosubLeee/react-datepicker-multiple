@@ -56,7 +56,8 @@ export interface ReactDatePickerCustomHeaderProps {
 
 export interface ReactDatePickerProps<
   CustomModifierNames extends string = never,
-  WithRange extends boolean | undefined = undefined
+  WithRange extends boolean | undefined = undefined,
+  WithMultiple extends boolean | undefined = undefined
 > {
   adjustDateOnChange?: boolean | undefined;
   allowSameDay?: boolean | undefined;
@@ -124,7 +125,9 @@ export interface ReactDatePickerProps<
   onCalendarOpen?(): void;
   onChange(
     date: WithRange extends false | undefined
-      ? Date | null
+      ? WithMultiple extends false | undefined
+        ? Date | null
+        : Date[] | null
       : [Date | null, Date | null],
     event: React.SyntheticEvent<any> | undefined
   ): void;
@@ -214,14 +217,15 @@ export interface ReactDatePickerProps<
   enableTabLoop?: boolean | undefined;
   yearItemNumber?: number | undefined;
   multipleSelected?: Date[];
-  selectsMultiple?: boolean;
+  selectsMultiple?: WithMultiple;
 }
 
 export class ReactDatePicker<
   CustomModifierNames extends string = never,
-  WithRange extends boolean | undefined = undefined
+  WithRange extends boolean | undefined = undefined,
+  WithMultiple extends boolean | undefined = undefined
 > extends React.Component<
-  ReactDatePickerProps<CustomModifierNames, WithRange>
+  ReactDatePickerProps<CustomModifierNames, WithRange, WithMultiple>
 > {
   readonly setBlur: () => void;
   readonly setFocus: () => void;

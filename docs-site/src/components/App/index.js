@@ -1,17 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import ExampleComponents from "../Examples";
 import ribbon from "./ribbon.png";
 import logo from "./logo.png";
-import DatePicker from "react-datepicker";
+import DatePicker from "../../../../dist/index";
+import { format } from "date-fns";
 
 const Example = () => {
-  const [isOpen, setIsOpen] = useState(true);
-  const [startDate, setStartDate] = useState(new Date());
+  const [selectedDates, setSelectedDates] = useState([
+    new Date(),
+    new Date(Date.now() - 100000000),
+  ]);
   const [isScrolled, setIsScrolled] = useState(true);
+
+  const inputStr = useMemo(() => {
+    const minDate = new Date(Math.min.apply(null, selectedDates));
+    const maxDate = new Date(Math.max.apply(null, selectedDates));
+    return `${format(minDate, "yyyy-MM-dd")} -> ${format(
+      maxDate,
+      "yyyy-MM-dd"
+    )}`;
+  }, [selectedDates]);
 
   useEffect(() => {
     document.addEventListener("scroll", handleScroll);
   }, []);
+
+  const handleOnChange = (dates, event) => {
+    setSelectedDates(dates);
+  };
 
   const handleScroll = () => {
     const Show = window.scrollY < 400;
@@ -24,13 +40,11 @@ const Example = () => {
 
   return (
     <DatePicker
-      open={isOpen && isScrolled}
-      selected={startDate}
-      onChange={date => {
-        setStartDate(date);
-        setIsOpen(false);
-      }}
-      onInputClick={() => setIsOpen(true)}
+      selectsMultiple
+      multipleSelected={selectedDates}
+      value={inputStr}
+      onChange={handleOnChange}
+      shouldCloseOnSelect={false}
     />
   );
 };
