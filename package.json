@@ -2,7 +2,7 @@
   "author": "WoosubLeee",
   "name": "react-datepicker-multiple-dates",
   "description": "Extended react-datepicker for selecting multiple unconsecutive dates",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "license": "MIT",
   "main": "dist/index.js",
   "browser": "dist/react-datepicker.min.js",
