@@ -7,21 +7,24 @@ export default class inputTime extends React.Component {
     date: PropTypes.instanceOf(Date),
     timeString: PropTypes.string,
     timeInputLabel: PropTypes.string,
-    customTimeInput: PropTypes.element
+    customTimeInput: PropTypes.element,
+    selectsRange: PropTypes.bool,
+    startDate: PropTypes.instanceOf(Date),
+    endDate: PropTypes.instanceOf(Date),
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      time: this.props.timeString
+      time: this.props.timeString,
     };
   }
 
   static getDerivedStateFromProps(props, state) {
     if (props.timeString !== state.time) {
       return {
-        time: props.timeString
+        time: props.timeString,
       };
     }
 
@@ -29,7 +32,7 @@ export default class inputTime extends React.Component {
     return null;
   }
 
-  onTimeChange = time => {
+  onTimeChange = (time) => {
     this.setState({ time });
     const date = new Date();
     date.setHours(time.split(":")[0]);
@@ -45,7 +48,10 @@ export default class inputTime extends React.Component {
       return React.cloneElement(customTimeInput, {
         date,
         value: time,
-        onChange: this.onTimeChange
+        onChange: this.onTimeChange,
+        selectsRange: this.props.selectsRange,
+        startDate: this.props.startDate,
+        endDate: this.props.endDate,
       });
     }
 
@@ -57,7 +63,7 @@ export default class inputTime extends React.Component {
         name="time-input"
         required
         value={time}
-        onChange={ev => {
+        onChange={(ev) => {
           this.onTimeChange(ev.target.value || timeString);
         }}
       />

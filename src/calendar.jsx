@@ -923,6 +923,9 @@ export default class Calendar extends React.Component {
           timeInputLabel={this.props.timeInputLabel}
           onChange={this.props.onTimeChange}
           customTimeInput={this.props.customTimeInput}
+          selectsRange={this.props.selectsRange}
+          startDate={this.props.startDate}
+          endDate={this.props.endDate}
         />
       );
     }
