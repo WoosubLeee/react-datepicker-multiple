@@ -30,13 +30,6 @@ export interface CalendarContainerProps {
 export function registerLocale(localeName: string, localeData: Locale): void;
 export function setDefaultLocale(localeName: string): void;
 export function getDefaultLocale(): string;
-export class InputTime extends React.Component<{
-  onChange: (date: Date) => void;
-  date: Date;
-  timeString: string;
-  timeInputLabel: string;
-  customTimeInput: HTMLElement;
-}> {}
 export function CalendarContainer(
   props: CalendarContainerProps
 ): React.ReactElement;
