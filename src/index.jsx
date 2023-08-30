@@ -37,6 +37,8 @@ import {
   getDefaultLocale,
   DEFAULT_YEAR_ITEM_NUMBER,
   isSameDay,
+  setHours,
+  setMinutes,
 } from "./date_utils";
 import onClickOutside from "react-onclickoutside";
 
@@ -544,7 +546,7 @@ export default class DatePicker extends React.Component {
         if (noRanges) {
           onChange([changedDate, null], event);
         } else if (hasStartRange) {
-          if (isBefore(changedDate, startDate)) {
+          if (isBefore(changedDate, setMinutes(setHours(startDate, 0), 0))) {
             onChange([changedDate, null], event);
           } else {
             onChange([startDate, changedDate], event);
